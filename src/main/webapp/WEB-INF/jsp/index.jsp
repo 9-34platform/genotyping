@@ -1,0 +1,1 @@
+<%@page contentType="text/html; charset=UTF-8" language="java" %><html><head></head><body><div class="container">    <form action="/add">        请输入a：<input name="a">        请输入b：<input name="b">        <button type="submit">求和</button>    </form></div></body></html>

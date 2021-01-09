@@ -1,0 +1,1 @@
+<%@page contentType="text/html; charset=UTF-8" language="java" %><html><head></head><body><div class="container">    结果是：${result}</div></body></html>
