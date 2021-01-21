@@ -5,10 +5,10 @@ This demo provides some web services running in local browser based on the Sprin
 It is necessary to complete the missing info in `Remote.java` , so you can access the designated server: 
 
 ```
- private final String user = "";
- private final String host = "";
- private final int port = 0;
- private final String password = "";
+ protected final String user = "";
+ protected final String host = "";
+ protected final int port = 0;
+ protected final String password = "";
 ```
 
 ## Usage
