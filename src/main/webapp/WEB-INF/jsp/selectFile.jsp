@@ -12,7 +12,7 @@
     <%
         List<String> results = (List<String>) request.getAttribute("dirFile");
         for (String result: results) {
-            out.print(result+"<br>");
+            out.print(result+"<br><br>");
         }
     %>
 </div>

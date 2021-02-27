@@ -5,7 +5,11 @@
 </head>
 <body>
 <div class="container">
-    ${name}
+    <form>
+        ${name}
+        <br>
+        ${name1}
+    </form>
 </div>
 </body>
 </html>

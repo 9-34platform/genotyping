@@ -11,10 +11,10 @@ import java.util.List;
 
 public class Remote {
 
-    protected final String user = "";
-    protected final String host = "";
-    protected final int port = 0;
-    protected final String password = "";
+    public final String user = "vip494";
+    public final String host = "118.24.216.223";
+    public final int port = 22;
+    public final String password = "pd6704";
 
     public static List<String> remoteExecute(Session session, String command) throws JSchException {
         //return String.format(">> %s", command);

@@ -1,0 +1,1 @@
+<%@page contentType="text/html; charset=UTF-8" language="java" %><html><head></head><body><div>    <form action="/upload" method="post" enctype="multipart/form-data">        <input type="file" name="file1"/>        <br>        <input type="file" name="file2"/>        <br>        <button type="submit">&emsp;上传&emsp;</button>    </form></div></body></html>

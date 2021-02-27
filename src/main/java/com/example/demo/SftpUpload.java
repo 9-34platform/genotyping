@@ -2,11 +2,13 @@ package com.example.demo;
 
 import com.jcraft.jsch.*;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class SftpUpload {
-    public static void transfer(String pathStr, String nameStr) throws Exception {
+
+    public static ChannelSftp connect() throws JSchException {
         Remote remote = new Remote();
         JSch jSch = new JSch();
         //建立一个Linux session
@@ -21,17 +23,19 @@ public class SftpUpload {
         //通过sftp的方式连接
         ChannelSftp channel = (ChannelSftp) session.openChannel("sftp");
         channel.connect();
-        //upload file
-        File file = new File(pathStr);
-        InputStream inputStream = new FileInputStream(file);
-        channel.put(inputStream, "/data/home/vip494/" + nameStr);
-        /*
-         //download file
-         *OutputStream outputStream = new FileOutputStream("本地路径")
-         *channel.get("服务器路径", outputStream);
-         */
-        //关闭流
-        inputStream.close();
-        //outputStream.close();
+        return channel;
     }
+
+    public static void transfer(ChannelSftp channel, InputStream is, String fileName) throws SftpException, JSchException, IOException {
+        //Directory for storing Fastq files
+        String fqDir = "/data/home/vip494/user0/fq/";
+        //upload file stream
+        channel.put(is, fqDir + fileName);
+        is.close();
+    }
+
+    public static void disconnect(ChannelSftp channel) {
+        channel.disconnect();
+    }
+
 }
