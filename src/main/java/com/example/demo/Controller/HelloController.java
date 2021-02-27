@@ -59,7 +59,7 @@ public class HelloController extends HttpServlet {
 
         //调用算法在Spring服务器上拆分fastq文件
         String springPath = "E:\\Cache\\";
-        SampleSplitAlgo.split(springPath+"fq\\", springPath+"name.txt", springPath+fileName1, springPath+fileName2);
+        //SampleSplitAlgo.split(springPath+"fq\\", springPath+"name.txt", springPath+fileName1, springPath+fileName2);
         //connect to a channel
         ChannelSftp channel = SftpUpload.connect();
         for (int i = 0; i < 96; i++) {
@@ -74,8 +74,14 @@ public class HelloController extends HttpServlet {
             SftpUpload.transfer(channel, is1, fileName1);
             SftpUpload.transfer(channel, is2, fileName2);
             //在服务器上依次运行bwa,samtools,igvtools模块，得到wig文件
+            /*
             Bam.pipe(fileName1, fileName2, i);
             Bam.index(i);
+             */
+            Bwa.mem(fileName1, fileName2, i);
+            Samtools.view(i);
+            Samtools.sort(i);
+            Samtools.index(i);
             Igvtools.count(i);
         }
         //disconnect from channel
